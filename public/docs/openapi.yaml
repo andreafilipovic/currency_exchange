@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  '/api/v1/app/currency_data_info/{currency}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    currency: JPY
+                    currency_exchange_rate: 107.17
+                    currency_surcharge: 7.5
+                    currency_discount: 0
+                  success: true
+                  message: 'Currency data retrieved successfully'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      currency: JPY
+                      currency_exchange_rate: 107.17
+                      currency_surcharge: 7.5
+                      currency_discount: 0
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Currency data retrieved successfully'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: currency
+        description: ''
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/app/order:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                currency_id:
+                  type: required
+                  description: 'The id of the currency.'
+                  example: 1
+                email:
+                  type: required
+                  description: 'user email'
+                  example: test@test.com
+                amount:
+                  type: required
+                  description: 'amount of exchanging'
+                  example: 100
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
