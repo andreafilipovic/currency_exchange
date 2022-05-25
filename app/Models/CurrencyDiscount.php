@@ -20,6 +20,7 @@ class CurrencyDiscount extends Model
     }
 
     //getting currency discount for passed currency
+    //currency discount added so it can be configurable for currnecy
     public function getCurrencyDiscount($currency)
     {
         $current_currency = new CurrentCurrency();
